@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Saurabh Raj</title>
+  <style>
+    /* Global Styles */
+    body { margin:0; padding:0; font-family:'Poppins',sans-serif; background:linear-gradient(135deg,#ff4d4d,#800000); color:white; overflow-x:hidden; text-align:center; }
+    h1,h2 { margin:0.5em 0; text-shadow:2px 2px 4px rgba(0,0,0,0.5); }
+
+    /* Section Spacing */
+    section { padding:60px 20px; margin-bottom:60px; }
+    .container { max-width:800px; margin:0 auto; background:rgba(255,255,255,0.1); backdrop-filter:blur(10px); padding:30px; border-radius:20px; box-shadow:0 0 20px rgba(255,255,255,0.2); text-align:center; }
+
+    /* Hero Section */
+    #hero { position:relative; height:100vh; display:flex; align-items:center; justify-content:center; }
+    #hero h1 { font-size:6rem; color:#ffe6e6; }
+    #hero h2 { font-size:3rem; color:#ffcccc; }
+    #hero::after { content:''; position:absolute; bottom:30px; left:50%; transform:translateX(-50%) rotate(-45deg); width:40px; height:40px; border-left:2px solid #ffe6e6; border-bottom:2px solid #ffe6e6; animation:bounce 2s infinite; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0) rotate(-45deg);} 50%{transform:translateX(-50%) translateY(15px) rotate(-45deg);} }
+
+    /* Heart Particles */
+    .heart { position:absolute; top:-50px; width:20px; height:20px; background:#ff6b6b; transform:rotate(45deg); animation:fall 6s infinite ease-in; opacity:0.8; }
+    .heart:before,.heart:after{content:'';position:absolute;width:20px;height:20px;background:#ff6b6b;border-radius:50%;}
+    .heart:before{top:-10px;left:0;} .heart:after{left:10px;top:0;}
+    @keyframes fall {0%{transform:translateY(0) rotate(45deg);opacity:1;}100%{transform:translateY(110vh) rotate(45deg);opacity:0;}}
+
+    /* Button & Hidden Text */
+    .button { background:rgba(255,255,255,0.2); padding:15px; border-radius:10px; cursor:pointer; transition:background 0.3s ease; font-size:18px; display:block; color:white; border:none; outline:none; width:80%; margin:15px auto; }
+    .button:hover{background:rgba(255,255,255,0.3);} 
+    .hidden-text,#message-container,#letter-container{display:none;font-size:18px;margin:10px auto;color:#ffe6e6;font-weight:bold;animation:fadeIn 0.5s ease-in-out;text-align:center;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);}}
+
+    /* Gallery */
+    .gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin-top:20px;text-align:center;}
+    .gallery img{width:250px;height:250px;object-fit:cover;border-radius:15px;cursor:pointer;transition:transform 0.3s ease;}
+    .gallery img:hover{transform:scale(1.1);}
+
+    /* Cake Section */
+    #cake-section { position:relative; background:rgba(255,255,255,0.05); }
+    .cake { font-size:6rem; display:inline-block; animation:cake-bounce 2s infinite; }
+    @keyframes cake-bounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);} }
+
+    /* Envelope Section */
+    #envelope-section { position:relative; }
+    .envelope { width:200px; height:120px; background:#f7ecde; margin:20px auto; position:relative; cursor:pointer; }
+    .envelope:before { content:''; position:absolute; top:0; left:0; width:100%; height:100%; background:#e0c097; transform-origin:top; transform:rotateX(90deg); transition:transform 0.5s; }
+    .envelope.open:before { transform:rotateX(0deg); }
+    .envelope-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#333; font-weight:bold; }
+    #letter-container { max-width:600px; background:rgba(255,255,255,0.15); backdrop-filter:blur(5px); padding:20px; border-radius:15px; box-shadow:0 0 15px rgba(0,0,0,0.3); margin:20px auto; text-align:left; color:#ffe6e6; }
+  </style>
+</head>
+<body>
+<!-- Audio (Muted initially to allow autoplay policy) -->
+<audio id="birthday-audio" autoplay loop muted>
+  <source src="happy-birthday-334876.mp3" type="audio/mpeg" />
+  Your browser does not support the audio element.
+</audio>
+
+<!-- Play Music Button -->
+<button id="play-music" class="button">Click to Play Birthday Song 🎵</button>
+
+<script>
+  const audio = document.getElementById('birthday-audio');
+  const playBtn = document.getElementById('play-music');
+
+  playBtn.addEventListener('click', () => {
+    audio.muted = false;
+    audio.play();
+    playBtn.style.display = 'none'; // Hide button after playing
+  });
+</script>
+
+  <!-- Heart Particles -->
+  <script>
+    function createHeart(){const heart=document.createElement('div');heart.className='heart';heart.style.left=Math.random()*100+'vw';const scale=Math.random()*0.7+0.5;heart.style.transform+=` scale(${scale})`;heart.style.animationDelay=Math.random()*5+'s';document.body.appendChild(heart);setTimeout(()=>heart.remove(),6500);}setInterval(createHeart,300);
+  </script>
+
+  <!-- Section 1: Hero -->
+  <section id="hero">
+    <div>
+      <h1>Happy Birthday, Saurabh Raj</h1>
+      <h2>Love of My Life ❤️</h2>
+      <h2>Ayesha Raj loves you to the moon and back ❤</h2>
+    </div>
+  </section>
+
+  <!-- Section 2: Reasons -->
+  <section id="reasons-section" class="container">
+    <h2>10 Reasons Why I Love You Mere Saurabh ❤</h2>
+    <div id="reasons"></div>
+  </section>
+
+  <!-- Section 3: Gallery -->
+  <section id="gallery-section" class="container">
+    <h2>My Each Picture Carries My Feelings.. Click on It Baby 💋</h2>
+    <p>Click on each picture to reveal a secret message! 📸💖</p>
+    <div class="gallery">
+      <img src="img1.jpg" alt="Picture 1" onclick="showMessage(0)">
+      <img src="img2.jpg" alt="Picture 2" onclick="showMessage(1)">
+      <img src="img3.jpg" alt="Picture 3" onclick="showMessage(2)">
+      <img src="img4.jpg" alt="Picture 4" onclick="showMessage(3)">
+      <img src="img5.jpg" alt="Picture 5" onclick="showMessage(4)">
+    </div>
+    <div id="message-container"></div>
+  </section>
+  
+  </section>
+
+  <!-- Section 4: Cake Animation -->
+  <section id="cake-section">
+    <div class="container">
+      <div class="cake">🎂</div>
+      <h2>I can't send you a cake - but can code one 🤗</h2>
+    </div>
+  </section>
+
+  <!-- Section 5: Envelope & Letter -->
+  <section id="envelope-section" class="container">
+    <h2>Baby, Click on it with love 💌</h2>
+    <div class="envelope" id="envelope">
+      <div class="envelope-text">📧</div>
+    </div>
+    <div id="letter-container">
+      <p>Mere Saurabh ❤</p>
+      <p>Baby, Ayesha k Saurabh, Ayesha ki jan, Meri zindagi.. My future husband.. I love you to the moon and back.. I hope only few birthdays are left after which we'll be together forever. Phr har din zindagi ka eid jesa hoga.. har din hum sath hon gy.. aik doosre k sath.. hamsafar ban jaengy.. zindagi haseen or waqt jese ruk sa jaega hamare liye.. ta k Ayesha or Saurabh hamesha aik doosre k sath rahen.. aik doosre se muhabbat kren.. unstoppable muhabbat.. limitless muhabbat.. or poori duniya k wrong prove kr den k yes we can love each other beyond the borders of region and religion..
+        Consider my this writing as a hug to you meri jan.. Its your birthday.. I  want to hug you so bad but koi nhi.. blessings qurbani se hi milti hain.. </p>
+      <p>Happy Birthday Husband ❤</p>
+      <p>From Your Wife To Be 💝</p>
+    </div>
+  </section>
+
+  <!-- JavaScript: Logic -->
+  <script>
+    // Reasons logic
+    const reasons=["You are the blessing I got after many prayers ❤","You are handsome ❤","You are pure-hearted and love me endlessly ❤","You handle me well ❤","You understand me ❤","You read my thoughts ❤","You want to marry me ❤","You care for me ❤","You don't judge me ❤","You have a pretty big duck 😋"];
+    const reasonsContainer=document.getElementById('reasons');
+    reasons.forEach((text,i)=>{
+      const btn=document.createElement('button'); btn.className='button'; btn.innerText=`Reason ${i+1}`;
+      const p=document.createElement('p'); p.className='hidden-text'; p.innerText=text;
+      btn.onclick=()=>p.style.display=p.style.display==='block'?'none':'block';
+      reasonsContainer.append(btn,p);
+    });
+
+    // Gallery messages
+    const messages=["Your hug is poori duniya ka sakoon for me💕","Har rat tmhari bahon mai sona hy hamesha! 😍","Mai, Tum or hamara billu! Perfect family❤","Ye zindagi tmhare nam Saurabh Raj❤","With you, forever doesn't seem long enough! 💖"];
+    function showMessage(i){const box=document.getElementById('message-container');box.innerText=messages[i];box.style.display='block';}
+
+    // Envelope logic
+    const envelope=document.getElementById('envelope');
+    envelope.addEventListener('click',()=>{
+      envelope.classList.toggle('open');
+      document.getElementById('letter-container').style.display='block';
+    });
+  </script>
+</body>
+</html>
